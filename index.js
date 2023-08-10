@@ -8,6 +8,7 @@ import express from "express"
 import morgan from 'morgan'
 import path from 'path'
 import router from "./routes/auth.js"
+import {fileURLToPath} from 'url'
 
 //env config
 dotenv.config()
@@ -15,6 +16,9 @@ dotenv.config()
 const app =express()
 //Db connection
 connectDB();
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 //middlewares
 app.use(cors());
 app.use(express.json());
